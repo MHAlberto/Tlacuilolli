@@ -1,0 +1,21 @@
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\begin{document}
+\begin{tikzpicture}[
+  x=1cm, y=1cm,
+  milestone/.style={align=center, text=black!85, font=\normalsize},
+  year/.style={text=black!85, font=\large\bfseries},
+]
+  \draw[black!40, line width=.48pt] (-.45,0) -- (11.25,0);
+  \fill[black!77] (0,0) circle[radius=1.8pt]
+    (5.4,0) circle[radius=1.8pt] (10.8,0) circle[radius=1.8pt];
+  \node[year, above=7pt] at (0,0) {1927};
+  \node[year, above=7pt] at (5.4,0) {1929};
+  \node[year, above=7pt] at (10.8,0) {1943};
+  \node[milestone, below=7pt] at (0,0) {Doctorado\\en Gotinga};
+  \node[milestone, below=7pt] at (5.4,0) {Docencia en\\Berkeley y Caltech};
+  \node[milestone, below=7pt] at (10.8,0) {Dirección científica\\de Los Álamos};
+\end{tikzpicture}
+\end{document}

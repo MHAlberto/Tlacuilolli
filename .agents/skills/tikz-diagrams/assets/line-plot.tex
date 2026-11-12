@@ -1,0 +1,17 @@
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage{lmodern}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+\begin{tikzpicture}[x=1.15cm,y=.8cm,>=Stealth]
+  \draw[->,black!70] (0,0) -- (4.65,0) node[right] {Time (s)};
+  \draw[->,black!70] (0,0) -- (0,3.6) node[above] {Distance (m)};
+  \foreach \t in {1,2,3,4}
+    \draw[black!70] (\t,0) -- ++(0,-.08) node[below] {\t};
+  \foreach \d in {1,2,3}
+    \draw[black!70] (0,\d) -- ++(-.06,0) node[left] {\d};
+  \draw[line width=.8pt] plot coordinates {(0,0) (1,.8) (2,1.6) (3,2) (4,3)};
+  \foreach \p in {(0,0),(1,.8),(2,1.6),(3,2),(4,3)}
+    \fill \p circle[radius=1.6pt];
+\end{tikzpicture}
+\end{document}

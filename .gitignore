@@ -1,0 +1,8 @@
+/build/
+/.venv/
+/examples/*.pdf
+/examples/*.png
+/tests/*.pdf
+__pycache__/
+Thumbs.db
+.DS_Store

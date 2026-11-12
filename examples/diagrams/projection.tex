@@ -1,0 +1,29 @@
+\documentclass[tikz,border=5pt]{standalone}
+\usepackage{lmodern}
+\usepackage{amsfonts}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+\begin{tikzpicture}[
+  x=1cm, y=1cm,
+  >=Stealth,
+  every node/.style={text=black!85},
+  vector/.style={->, draw=black!88, line width=.85pt},
+]
+  \coordinate (origin) at (0,0);
+  \coordinate (projection) at (3.9,0);
+  \coordinate (vector) at (3.9,1.95);
+
+  \draw[black!43, line width=.48pt] (-.48,0) -- (5.22,0)
+    node[right] {$\mathbb{R}u$};
+  \draw[vector] (origin) -- (projection)
+    node[midway, below=4pt] {$\alpha u$};
+  \draw[vector] (origin) -- (vector)
+    node[above=2pt] {$x$};
+  \draw[densely dashed, draw=black!70, line width=.64pt]
+    (projection) -- (vector) node[midway, right=3pt] {$r$};
+  \draw[draw=black!56, line width=.45pt]
+    (3.66,0) -- (3.66,.24) -- (3.9,.24);
+  \fill[black!88] (origin) circle[radius=1pt] node[below left] {$0$};
+\end{tikzpicture}
+\end{document}

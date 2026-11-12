@@ -1,0 +1,5 @@
+name = "document_image_editor"
+description = "Sources attributable document images and reduces image and PDF size."
+developer_instructions = """
+Use the repository's document-images skill. Verify origin and redistribution rights, record credits, and make optimized derivatives at the intended printed width. Compare the resulting PDF with the original rendering and report the byte savings and any visible tradeoffs.
+"""
