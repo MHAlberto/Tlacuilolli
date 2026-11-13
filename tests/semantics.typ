@@ -32,7 +32,7 @@ Véanse @theorem-one, @theorem-two y @definition-two.
 
 #display-equation($x &= 1 \ y &= 2$, numbering: "(1)", ref-label: <equation-one>)
 #display-equation($x + y = 3$)
-#display-equation($x y = 2$, numbering: "(1)", ref-label: <equation-two>)
+#equation($x y = 2$, ref-label: <equation-two>)
 
 Las ecuaciones @equation-one y @equation-two ilustran la numeración.
 #partial-derivative($f$, $x$, order: 3).
@@ -62,4 +62,5 @@ Las ecuaciones @equation-one y @equation-two ilustran la numeración.
   }
   assert.eq(counter(math.equation).at(<equation-one>), (1,))
   assert.eq(counter(math.equation).at(<equation-two>), (2,))
+  assert.eq(query(<equation-two>).first().numbering, "(1)")
 }

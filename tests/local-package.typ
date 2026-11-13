@@ -1,4 +1,4 @@
-#import "@local/tlacuilolli:0.3.0": *
+#import "@local/tlacuilolli:0.4.0": *
 
 #show: note-document.with(title: [Local package import], lang: "en", paper: "a4")
 

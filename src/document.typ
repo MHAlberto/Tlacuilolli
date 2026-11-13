@@ -1,4 +1,5 @@
 #import "code.typ": code-theme, listing-layout
+#import "mathematics.typ": equation-above, equation-below
 
 /// Apply the editorial style and insert a title in the running document.
 #let note-document(
@@ -44,7 +45,7 @@
   show heading: set text(weight: "semibold")
   show heading: set block(above: 1.14em, below: 0.63em, sticky: true)
   show math.equation.where(block: true): set text(size: equation-size)
-  show math.equation.where(block: true): set block(above: 1.18em, below: 1.18em)
+  show math.equation.where(block: true): set block(above: equation-above, below: equation-below)
   show quote.where(block: true): set block(inset: (x: 1.35em), above: 0.9em, below: 0.9em)
   show figure.caption: set text(size: 0.88em, fill: rgb("#343434"))
   show figure.caption: set par(justify: false, leading: 0.55em)

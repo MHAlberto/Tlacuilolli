@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0
+
+- Give mathematical statements and the text following display equations more vertical space.
+- Add `equation` for numbered displays and native cross-references.
+- Add an English PDF manual with Typst listings and rendered examples for every public macro.
+
 ## 0.3.0
 
 - Add syntax highlighting and line numbers to fenced code blocks.

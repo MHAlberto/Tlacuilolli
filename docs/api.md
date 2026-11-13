@@ -1,6 +1,6 @@
 # Tlacuilolli API
 
-Import `lib.typ` or `@local/tlacuilolli:0.3.0` once at the start of the document. The examples below assume a wildcard import.
+Import `lib.typ` or `@local/tlacuilolli:0.4.0` once at the start of the document. The examples below assume a wildcard import. The [PDF manual](manual.pdf) shows what the macros render.
 
 ## `note-document`
 
@@ -103,23 +103,24 @@ The examples include diagrams drawn in TikZ and exported as vector PDF or SVG. U
 ## Mathematics
 
 ```text
+equation(expression, numbering: "(1)", number-align: end + horizon,
+         spacing: auto, ref-label: none)
 display-equation(expression, numbering: none, number-align: end + horizon,
-                 spacing: 1.18em, ref-label: none)
+                 spacing: auto, ref-label: none)
 inner(first, second)
 set-builder(element, condition)
 derivative(function, variable, order: 1)
 partial-derivative(function, variable, order: 1)
 ```
 
-`display-equation` takes Typst math content such as `$x^2$` and displays it as a centered equation. Use Typst's `&` alignment points and `\` line breaks for derivations. `numbering` accepts a native pattern or function. `number-align` controls where the number sits. `spacing` sets the vertical space around the display. Supply `ref-label: <key>` along with numbering to cite it using `@key`.
+Both helpers center Typst math content such as `$x^2$`. `equation` automatically prints (1), (2), and so on. `display-equation` is unnumbered by default. Numbered displays share Typst's native equation counter. Use Typst's `&` alignment points and `\` line breaks for derivations. `numbering` accepts a native pattern or function and `number-align` controls the number position. The default spacing is `1.18em` above and `1.5em` below. Set `spacing` to apply the same gap on both sides. Supply `ref-label: <key>` on a numbered display to cite it using `@key`.
 
 ```typst
 The inline equation $a^2 + b^2 = c^2$ uses ordinary Typst math.
 
-#display-equation(
+#equation(
   $ (x + y)^2 &= (x + y)(x + y) \
                &= x^2 + 2 x y + y^2 $,
-  numbering: "(1)",
   ref-label: <expand>,
 )
 

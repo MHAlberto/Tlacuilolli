@@ -1,9 +1,18 @@
+#let equation-above = 1.18em
+#let equation-below = 1.5em
+
 /// Build a native display equation with optional numbering and a reference label.
-#let display-equation(expression, numbering: none, number-align: end + horizon, spacing: 1.18em, ref-label: none) = {
-  show math.equation.where(block: true): set block(above: spacing, below: spacing)
+#let display-equation(expression, numbering: none, number-align: end + horizon, spacing: auto, ref-label: none) = {
+  show math.equation.where(block: true): set block(
+    above: if spacing == auto { equation-above } else { spacing },
+    below: if spacing == auto { equation-below } else { spacing },
+  )
   let body = if type(expression) == content and expression.func() == math.equation { expression.body } else { expression }
   [#math.equation(block: true, numbering: numbering, number-align: number-align, body)#ref-label]
 }
+
+/// Display an equation numbered with the native document-wide counter.
+#let equation = display-equation.with(numbering: "(1)")
 
 /// Typeset an inner product with scalable angle brackets.
 #let inner(first, second) = $lr(chevron.l #first, #second chevron.r)$

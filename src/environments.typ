@@ -17,7 +17,7 @@
 
 #let environment-block(name, title, body) = {
   let heading = if title == none { name } else { [#name (#title)] }
-  block(width: 100%, above: 0.92em, below: 0.92em, breakable: true, align(start)[
+  block(width: 100%, spacing: 1.4em, breakable: true, align(start)[
     #strong([#heading.]) #body
   ])
 }

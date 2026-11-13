@@ -4,11 +4,13 @@ Tlacuilolli is a Typst library for research notes and scholarly essays. It start
 
 The project takes its name from the Nahuatl word `tlacuilolli`, recorded in the Gran Diccionario Náhuatl as “escritura, pintura.” [Dictionary entry at UNAM](https://tlachia.iib.unam.mx/elementos/tlacuilolli)
 
+[Read the English manual (PDF)](docs/manual.pdf) · [Typst source](docs/manual.typ)
+
 ## Quick start
 
 ### Typst web app
 
-1. Download and unzip the source archive from [Tlacuilolli v0.3.0](https://github.com/MHAlberto/Tlacuilolli/releases/tag/v0.3.0).
+1. Download and unzip the [Tlacuilolli v0.4.0 source archive](https://github.com/MHAlberto/Tlacuilolli/archive/refs/tags/v0.4.0.zip).
 2. Create a blank project in [Typst](https://typst.app/). Upload `lib.typ` next to `main.typ`. Create a `src` folder in the project and upload all the files from the archive's `src` folder into it.
 3. Paste this into `main.typ`. Start writing below the show rule.
 
@@ -63,17 +65,17 @@ Each image opens at full size. The linked PDFs include the complete notes and th
 | Physics | Mathematics |
 | :---: | :---: |
 | [![Physics note with a portrait, side-by-side prose, and a centered equation](docs/previews/physics.png)](docs/previews/physics.png) | [![Mathematics note with a projection diagram and a numbered theorem](docs/previews/mathematics.png)](docs/previews/mathematics.png) |
-| [Download PDF](https://github.com/MHAlberto/Tlacuilolli/releases/download/v0.3.0/atomic-bomb.pdf) · [Source](examples/atomic-bomb.typ) | [Download PDF](https://github.com/MHAlberto/Tlacuilolli/releases/download/v0.3.0/mathematics.pdf) · [Source](examples/mathematics.typ) |
+| [Download PDF](https://github.com/MHAlberto/Tlacuilolli/releases/download/v0.4.0/atomic-bomb.pdf) · [Source](examples/atomic-bomb.typ) | [Download PDF](https://github.com/MHAlberto/Tlacuilolli/releases/download/v0.4.0/mathematics.pdf) · [Source](examples/mathematics.typ) |
 
 | Equations and tables | Literature |
 | :---: | :---: |
 | [![Mathematics page showing display equations, a proof, and a compact table](docs/previews/equations-and-tables.png)](docs/previews/equations-and-tables.png) | [![Literature note with a block quotation, illustration, and footnote](docs/previews/literature.png)](docs/previews/literature.png) |
-| [Download PDF](https://github.com/MHAlberto/Tlacuilolli/releases/download/v0.3.0/mathematics.pdf) | [Download PDF](https://github.com/MHAlberto/Tlacuilolli/releases/download/v0.3.0/literature.pdf) · [Source](examples/literature.typ) |
+| [Download PDF](https://github.com/MHAlberto/Tlacuilolli/releases/download/v0.4.0/mathematics.pdf) | [Download PDF](https://github.com/MHAlberto/Tlacuilolli/releases/download/v0.4.0/literature.pdf) · [Source](examples/literature.typ) |
 
 | Python, JavaScript, and Rust | C, C++, and Java |
 | :---: | :---: |
 | [![Numbered and highlighted Python, JavaScript, and Rust listings](docs/previews/code.png)](docs/previews/code.png) | [![C, C++, and Java listings with custom numbering in C++](docs/previews/code-languages.png)](docs/previews/code-languages.png) |
-| [Download PDF](https://github.com/MHAlberto/Tlacuilolli/releases/download/v0.3.0/code.pdf) · [Source](examples/code.typ) | [References page](docs/previews/code-references.png) |
+| [Download PDF](https://github.com/MHAlberto/Tlacuilolli/releases/download/v0.4.0/code.pdf) · [Source](examples/code.typ) | [References page](docs/previews/code-references.png) |
 
 ## Install as a local package
 
@@ -81,21 +83,21 @@ Copy `lib.typ`, `typst.toml`, `LICENSE`, and `src/` into the version directory f
 
 | Platform | Version directory |
 | --- | --- |
-| Windows | `%APPDATA%\typst\packages\local\tlacuilolli\0.3.0` |
-| Linux | `$XDG_DATA_HOME/typst/packages/local/tlacuilolli/0.3.0`, or `~/.local/share/typst/packages/local/tlacuilolli/0.3.0` |
-| macOS | `~/Library/Application Support/typst/packages/local/tlacuilolli/0.3.0` |
+| Windows | `%APPDATA%\typst\packages\local\tlacuilolli\0.4.0` |
+| Linux | `$XDG_DATA_HOME/typst/packages/local/tlacuilolli/0.4.0`, or `~/.local/share/typst/packages/local/tlacuilolli/0.4.0` |
+| macOS | `~/Library/Application Support/typst/packages/local/tlacuilolli/0.4.0` |
 
 ```powershell
-$tlacuilolliPackage = Join-Path $env:APPDATA 'typst\packages\local\tlacuilolli\0.3.0'
+$tlacuilolliPackage = Join-Path $env:APPDATA 'typst\packages\local\tlacuilolli\0.4.0'
 New-Item -ItemType Directory -Force -Path $tlacuilolliPackage | Out-Null
 Copy-Item -Path lib.typ, typst.toml, LICENSE, src -Destination $tlacuilolliPackage -Recurse -Force
 ```
 
 ```sh
 # Linux
-tlacuilolli_package="${XDG_DATA_HOME:-$HOME/.local/share}/typst/packages/local/tlacuilolli/0.3.0"
+tlacuilolli_package="${XDG_DATA_HOME:-$HOME/.local/share}/typst/packages/local/tlacuilolli/0.4.0"
 # macOS uses the following path instead of the Linux assignment above.
-# tlacuilolli_package="$HOME/Library/Application Support/typst/packages/local/tlacuilolli/0.3.0"
+# tlacuilolli_package="$HOME/Library/Application Support/typst/packages/local/tlacuilolli/0.4.0"
 mkdir -p "$tlacuilolli_package"
 cp lib.typ typst.toml LICENSE "$tlacuilolli_package/"
 cp -R src "$tlacuilolli_package/"
@@ -104,7 +106,7 @@ cp -R src "$tlacuilolli_package/"
 In your own project, use the same show rule with this import.
 
 ```typst
-#import "@local/tlacuilolli:0.3.0": *
+#import "@local/tlacuilolli:0.4.0": *
 ```
 
 During development, rerun the copy commands after edits. If a module is removed, remove the corresponding old file from the installed copy. On a version bump, install to a new version directory and update the import in the consuming document. Typst also accepts `--package-path` for a custom package root. See [Typst's local package instructions](https://github.com/typst/packages#local-packages).
@@ -115,7 +117,7 @@ During development, rerun the copy commands after edits. If a module is removed,
 | --- | --- |
 | `note-document` | Page layout, type, title, and PDF metadata |
 | `image-left`, `image-right`, `image-center` | Figures with optional captions |
-| `display-equation` | Native display math with optional numbering and references |
+| `equation`, `display-equation` | Numbered and unnumbered display math with native cross-references |
 | `code-listing` | Highlighted code with optional titles and configurable line numbers |
 | `inner`, `set-builder`, `derivative`, `partial-derivative` | Mathematical notation |
 | `theorem`, `definition`, `lemma`, `proposition`, `corollary`, `axiom`, `example`, `remark` | Bilingual statements with independent, document-wide counters |
@@ -136,11 +138,12 @@ From the repository root, run the test script with PowerShell 7.
 pwsh -NoProfile -File tests/run.ps1
 ```
 
-The script builds the PDFs and PNG previews of the physics opening page and the code example under `build/`. It also checks document-wide counters, both languages, native references, figure geometry and pagination, repeating table headers, and a staged `@local` import. GitHub Actions runs the same script. To compile or preview an example directly, create the `build/` directory and run the following commands.
+The script builds the manual, examples, and PNG previews under `build/`. It also checks document-wide counters, both languages, native references, figure geometry and pagination, repeating table headers, and a staged `@local` import. GitHub Actions runs the same script. To compile or preview an example directly, create the `build/` directory and run the following commands.
 
 ```sh
 typst compile --root . examples/atomic-bomb.typ build/atomic-bomb.pdf
 typst compile --root . --pages 1 --ppi 130 examples/atomic-bomb.typ build/atomic-bomb-preview.png
+typst compile --root . docs/manual.typ build/manual.pdf
 ```
 
 ### Figures and image size

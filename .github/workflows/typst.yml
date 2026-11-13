@@ -16,3 +16,36 @@ jobs:
       - name: Compile examples and run assertions
         shell: pwsh
         run: ./tests/run.ps1
+      - name: Store release PDFs
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+        uses: actions/upload-artifact@v7
+        with:
+          name: release-pdfs
+          path: |
+            build/manual.pdf
+            build/atomic-bomb.pdf
+            build/mathematics.pdf
+            build/literature.pdf
+            build/code.pdf
+          if-no-files-found: error
+
+  release:
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    needs: typst
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: release-pdfs
+          path: pdfs
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          gh release create "$RELEASE_TAG" \
+            --repo "$GITHUB_REPOSITORY" --verify-tag --generate-notes \
+            pdfs/manual.pdf pdfs/atomic-bomb.pdf pdfs/mathematics.pdf \
+            pdfs/literature.pdf pdfs/code.pdf
