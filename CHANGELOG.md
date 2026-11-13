@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.0
+
+- Add syntax highlighting and line numbers to fenced code blocks.
+- Add `code-listing` for optional titles and custom line numbering.
+- Add a code example with six programming languages and a dedicated references page.
+
 ## 0.0.2 · GitHub release
 
 - Use New Computer Modern as the default text face and reduce the display equation size.

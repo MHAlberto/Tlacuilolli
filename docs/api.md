@@ -1,6 +1,6 @@
 # Tlacuilolli API
 
-Import `lib.typ` or `@local/tlacuilolli:0.0.2` once at the start of the document. The examples below assume a wildcard import.
+Import `lib.typ` or `@local/tlacuilolli:0.3.0` once at the start of the document. The examples below assume a wildcard import.
 
 ## `note-document`
 
@@ -165,6 +165,32 @@ Compare #derivative($q$, $t$, order: 2) with #partial-derivative($f$, $x$).
 
 See @identity.
 ```
+
+## Source code
+
+Fenced code blocks in a `note-document` get syntax highlighting and a line-number gutter. The language tag selects the syntax colors. Inline backticks remain useful for short names such as `main`.
+
+````typst
+```python
+def squared(x):
+    return x * x
+
+print(squared(4))
+```
+````
+
+`code-listing(body, lang: auto, title: none, start: 1, numbers: true)` applies the same style with optional controls. Use a string or a fenced raw block as `body`. A raw block supplies its language automatically. Set `lang` for a string, `title` for a caption above the listing, `start` to begin at a source file's line number, or `numbers: false` to hide the gutter.
+
+```typst
+#code-listing(
+  "int squared(int x) {\n    return x * x;\n}",
+  lang: "cpp",
+  title: [Square a value],
+  start: 12,
+)
+```
+
+Common tags include `python`, `rust`, `c`, `cpp`, `java`, `javascript`, `ts`, `bash`, `sql`, `json`, `yaml`, `html`, `css`, `go`, and `typ`. Use `cpp` on fences for C++. The formatter uses Typst's native syntax definitions. Tabs use four columns, blank source lines are numbered, and wrapped continuations are indented under their original line. [Typst raw code documentation](https://typst.app/docs/reference/text/raw/)
 
 ## Lists and tables
 

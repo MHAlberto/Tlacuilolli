@@ -1,4 +1,4 @@
-#import "@local/tlacuilolli:0.0.2": *
+#import "@local/tlacuilolli:0.3.0": *
 
 #show: note-document.with(title: [Local package import], lang: "en", paper: "a4")
 
@@ -12,6 +12,8 @@ The entry point resolves its internal modules inside the package.
 #theorem(ref-label: <local-theorem>)[The local package supports native references.]
 
 See @local-theorem and the opening chapter of Austen's novel @austen.
+
+#code-listing("def sample():\n    return 42", lang: "python", start: 8)
 
 #metadata(none) <before-references>
 

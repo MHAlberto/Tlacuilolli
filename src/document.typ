@@ -1,3 +1,5 @@
+#import "code.typ": code-theme, listing-layout
+
 /// Apply the editorial style and insert a title in the running document.
 #let note-document(
   title: none,
@@ -48,6 +50,8 @@
   show figure.caption: set par(justify: false, leading: 0.55em)
   show footnote.entry: set text(size: 0.8em)
   show footnote.entry: set par(justify: false, leading: 0.5em)
+  show raw.where(block: true): set raw(theme: code-theme, tab-size: 4)
+  show raw.where(block: true): listing-layout
   show bibliography: set text(size: 0.92em)
   show bibliography: set par(justify: false, leading: 0.45em)
   show bibliography: it => {
