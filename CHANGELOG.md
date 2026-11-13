@@ -1,6 +1,12 @@
 # Changelog
 
-## 0.1.0
+## 0.0.2 · GitHub release
+
+- Use New Computer Modern as the default text face and reduce the display equation size.
+- Add options for the display equation size and the title font.
+- Add a visual quick start with page previews and complete example PDFs.
+
+## 0.1.0 · Initial Typst Universe submission
 
 - Add a serif document style with configurable type, US Letter and A4 layouts, and optional metadata and page numbering.
 - Add native figure layouts, scholarly tables, Roman lists, display equations, and bilingual mathematical environments with document-wide counters.

@@ -10,7 +10,7 @@ function Invoke-Typst {
 Push-Location (Join-Path $PSScriptRoot '..')
 try {
     $packagePath = 'build/tests/packages'
-    $stagedPackage = Join-Path $packagePath 'local/tlacuilolli/0.1.0'
+    $stagedPackage = Join-Path $packagePath 'local/tlacuilolli/0.0.2'
     New-Item -ItemType Directory -Path $stagedPackage -Force | Out-Null
     Copy-Item -Path lib.typ, typst.toml, LICENSE, src -Destination $stagedPackage -Recurse -Force
 

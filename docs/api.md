@@ -1,6 +1,6 @@
 # Tlacuilolli API
 
-Import `lib.typ` or `@local/tlacuilolli:0.1.0` once at the start of the document. The examples below assume a wildcard import.
+Import `lib.typ` or `@local/tlacuilolli:0.0.2` once at the start of the document. The examples below assume a wildcard import.
 
 ## `note-document`
 
@@ -20,7 +20,7 @@ Import `lib.typ` or `@local/tlacuilolli:0.1.0` once at the start of the document
 )
 ```
 
-The signature is `note-document(title:, subtitle:, category:, author:, date:, description:, keywords:, show-byline:, lang:, paper:, font:, font-size:, margin:, show-page-number:, title-size:, subtitle-size:, category-size:, leading:, paragraph-spacing:, body)`. Use a show rule to supply `body` automatically.
+The signature is `note-document(title:, subtitle:, category:, author:, date:, description:, keywords:, show-byline:, lang:, paper:, font:, font-size:, equation-size:, margin:, show-page-number:, title-size:, title-font:, subtitle-size:, category-size:, leading:, paragraph-spacing:, body)`. Use a show rule to supply `body` automatically.
 
 | Option | Accepted values and defaults |
 | --- | --- |
@@ -33,14 +33,31 @@ The signature is `note-document(title:, subtitle:, category:, author:, date:, de
 | `show-byline` | Defaults to `false`. Set it to `true` to show the author and date beneath the title. |
 | `lang` | A native Typst language code, default `"en"`. Use `"es"` for Spanish text and statement names. |
 | `paper` | A native Typst paper name, including `"us-letter"` (default) and `"a4"`. |
-| `font` | A family name or ordered array of family names. Defaults to `("Libertinus Serif", "New Computer Modern")`. |
+| `font` | A family name or ordered array of family names. Defaults to `("New Computer Modern", "Libertinus Serif")`. |
 | `font-size` | Body type size, default `13pt`. |
+| `equation-size` | Size of displayed equations, including those made with `display-equation`. Defaults to `0.95em` relative to the surrounding text. |
 | `margin` | A length or native page-margin dictionary, default `(x: 0.64in, top: 0.56in, bottom: 0.58in)`. |
 | `show-page-number` | Set to `true` for centered page numbers at the bottom. Defaults to `false`. |
 | `title-size`, `subtitle-size`, `category-size` | Lengths relative to the body size when written in `em`. Defaults are `3.8em`, `1.34em`, and `0.86em`. |
+| `title-font` | A family name or ordered array of family names. Defaults to `auto`, which uses `font`. |
 | `leading`, `paragraph-spacing` | Native paragraph lengths, default `0.66em` and `1.28em`. |
 
 The title stays with the start of the body. Headings retain native semantics and default to unnumbered. Ordinary paragraphs inherit Typst's widow and orphan control. Hyphenation is off by default. Use `#set text(hyphenate: auto)` to restore Typst's language-aware hyphenation. Write headings, block quotes, footnotes, and inline equations in ordinary Typst syntax. [Typst page setup](https://typst.app/docs/guides/page-setup/)
+
+### Typography
+
+Use this show rule in place of the first example to pair EB Garamond titles with New Computer Modern body text and make displayed equations a little smaller.
+
+```typst
+#show: note-document.with(
+  title: [Notas de investigación],
+  lang: "es",
+  title-font: ("EB Garamond", "New Computer Modern"),
+  equation-size: 0.9em,
+)
+```
+
+Use `font: "Libertinus Serif"` for the original text face, or `font: ("STIX Two Text", "New Computer Modern")` for another scholarly serif. EB Garamond and STIX Two Text must be available to Typst. In the web editor, check the font picker and upload a font file if needed. For the CLI, install the font or use `--font-path`. Equations use Typst's math font. [Typst font selection](https://typst.app/docs/reference/text/text/#parameters-font)
 
 ## Figures
 

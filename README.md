@@ -4,12 +4,16 @@ Tlacuilolli is a Typst library for research notes and scholarly essays. It start
 
 The project takes its name from the Nahuatl word `tlacuilolli`, recorded in the Gran Diccionario Náhuatl as “escritura, pintura.” [Dictionary entry at UNAM](https://tlachia.iib.unam.mx/elementos/tlacuilolli)
 
-## Start writing
+## Quick start
 
-Use Typst 0.15.1 or newer. This import will be available after the package is published on Typst Universe.
+### Typst web app
+
+1. Download and unzip the source archive from [Tlacuilolli v0.0.2](https://github.com/MHAlberto/Tlacuilolli/releases/tag/v0.0.2).
+2. Create a blank project in [Typst](https://typst.app/). Upload `lib.typ` next to `main.typ`. Create a `src` folder in the project and upload the five files from the archive's `src` folder into it.
+3. Paste this into `main.typ`. Start writing below the show rule.
 
 ```typst
-#import "@preview/tlacuilolli:0.1.0": *
+#import "lib.typ": note-document
 
 #show: note-document.with(
   title: [Cuaderno de lectura],
@@ -19,11 +23,37 @@ Use Typst 0.15.1 or newer. This import will be available after the package is pu
 )
 
 Aquí comienza mi investigación.
+
+$ a^2 + b^2 = c^2 $
 ```
 
-To try this example before publication, use the local package import below. In a note stored in this repository's `examples/` directory, you can also use `#import "../lib.typ": *`.
+To use helpers such as `theorem`, import them alongside `note-document` or use `: *` to import the full API.
 
-The default body font is Libertinus Serif with New Computer Modern as the next choice. Both families ship with the official Typst CLI. Display and inline mathematics use Typst's bundled math font. Pass `font` to choose an installed family or an ordered list of families.
+### Typst Universe
+
+The first registry submission is [`0.1.0`](https://github.com/typst/packages/pull/6394). Once Typst Universe publishes it, you can start a web project with this import and the same basic show rule.
+
+```typst
+#import "@preview/tlacuilolli:0.1.0": note-document
+```
+
+### Typography
+
+The default typeface is New Computer Modern, with Libertinus Serif as a fallback. Both ship with the official Typst CLI. Display equations are set at 95% of the surrounding text size. Use `equation-size` to adjust them and `title-font` to choose a separate face for the title. The [typography options](docs/api.md#typography) include serif pairings.
+
+## Gallery
+
+Each image opens at full size. The linked PDFs include the complete notes and their references.
+
+| Physics | Mathematics |
+| :---: | :---: |
+| [![Physics note with a portrait, side-by-side prose, and a centered equation](docs/previews/physics.png)](docs/previews/physics.png) | [![Mathematics note with a projection diagram and a numbered theorem](docs/previews/mathematics.png)](docs/previews/mathematics.png) |
+| [Download PDF](https://github.com/MHAlberto/Tlacuilolli/releases/download/v0.0.2/atomic-bomb.pdf) · [Source](examples/atomic-bomb.typ) | [Download PDF](https://github.com/MHAlberto/Tlacuilolli/releases/download/v0.0.2/mathematics.pdf) · [Source](examples/mathematics.typ) |
+
+| Equations and tables | Literature |
+| :---: | :---: |
+| [![Mathematics page showing display equations, a proof, and a compact table](docs/previews/equations-and-tables.png)](docs/previews/equations-and-tables.png) | [![Literature note with a block quotation, illustration, and footnote](docs/previews/literature.png)](docs/previews/literature.png) |
+| [Download PDF](https://github.com/MHAlberto/Tlacuilolli/releases/download/v0.0.2/mathematics.pdf) | [Download PDF](https://github.com/MHAlberto/Tlacuilolli/releases/download/v0.0.2/literature.pdf) · [Source](examples/literature.typ) |
 
 ## Install as a local package
 
@@ -31,21 +61,21 @@ Copy `lib.typ`, `typst.toml`, `LICENSE`, and `src/` into the version directory f
 
 | Platform | Version directory |
 | --- | --- |
-| Windows | `%APPDATA%\typst\packages\local\tlacuilolli\0.1.0` |
-| Linux | `$XDG_DATA_HOME/typst/packages/local/tlacuilolli/0.1.0`, or `~/.local/share/typst/packages/local/tlacuilolli/0.1.0` |
-| macOS | `~/Library/Application Support/typst/packages/local/tlacuilolli/0.1.0` |
+| Windows | `%APPDATA%\typst\packages\local\tlacuilolli\0.0.2` |
+| Linux | `$XDG_DATA_HOME/typst/packages/local/tlacuilolli/0.0.2`, or `~/.local/share/typst/packages/local/tlacuilolli/0.0.2` |
+| macOS | `~/Library/Application Support/typst/packages/local/tlacuilolli/0.0.2` |
 
 ```powershell
-$tlacuilolliPackage = Join-Path $env:APPDATA 'typst\packages\local\tlacuilolli\0.1.0'
+$tlacuilolliPackage = Join-Path $env:APPDATA 'typst\packages\local\tlacuilolli\0.0.2'
 New-Item -ItemType Directory -Force -Path $tlacuilolliPackage | Out-Null
 Copy-Item -Path lib.typ, typst.toml, LICENSE, src -Destination $tlacuilolliPackage -Recurse -Force
 ```
 
 ```sh
 # Linux
-tlacuilolli_package="${XDG_DATA_HOME:-$HOME/.local/share}/typst/packages/local/tlacuilolli/0.1.0"
+tlacuilolli_package="${XDG_DATA_HOME:-$HOME/.local/share}/typst/packages/local/tlacuilolli/0.0.2"
 # macOS uses the following path instead of the Linux assignment above.
-# tlacuilolli_package="$HOME/Library/Application Support/typst/packages/local/tlacuilolli/0.1.0"
+# tlacuilolli_package="$HOME/Library/Application Support/typst/packages/local/tlacuilolli/0.0.2"
 mkdir -p "$tlacuilolli_package"
 cp lib.typ typst.toml LICENSE "$tlacuilolli_package/"
 cp -R src "$tlacuilolli_package/"
@@ -54,7 +84,7 @@ cp -R src "$tlacuilolli_package/"
 In your own project, use the same show rule with this import.
 
 ```typst
-#import "@local/tlacuilolli:0.1.0": *
+#import "@local/tlacuilolli:0.0.2": *
 ```
 
 During development, rerun the copy commands after edits. If a module is removed, remove the corresponding old file from the installed copy. On a version bump, install to a new version directory and update the import in the consuming document. Typst also accepts `--package-path` for a custom package root. See [Typst's local package instructions](https://github.com/typst/packages#local-packages).
@@ -75,11 +105,7 @@ Side figures use two fixed columns. Long prose can continue in its column across
 
 Tables size their columns to the contents by default. For a wider table, specify flexible tracks such as `columns: (2fr, 1fr)`.
 
-## Examples and development
-
-- [Physics](examples/atomic-bomb.typ) covers the Manhattan Project, Oppenheimer's doctoral research, and his leadership at Los Alamos with archival images and a TikZ chronology.
-- [Mathematics](examples/mathematics.typ) uses a TikZ projection diagram, a geometric proof, cross-references, and a compact table.
-- [Literature](examples/literature.typ) uses a block quotation and an illustration from an early edition of the novel.
+## Development
 
 The three examples use the same US Letter layout, type sizes, and spacing. Each ends with a dedicated page of references.
 
@@ -115,4 +141,4 @@ Open the repository in Codex to use [`$tikz-diagrams`](.agents/skills/tikz-diagr
 
 The code and original diagrams use the [MIT license](LICENSE). Archival images have separate [credits and public-domain records](examples/assets/CREDITS.md).
 
-The local package is `@local/tlacuilolli:0.1.0`. See the [publishing guide](docs/publishing.md) for the first GitHub push, a versioned release, and a separate Typst Universe submission.
+See the [publishing guide](docs/publishing.md) for GitHub releases and Typst Universe submissions.
